@@ -1,0 +1,18 @@
+div {
+  width: 180px;
+  height: 30px;
+  background-color: yellow;
+  color: blue;
+  font-size: 30px;
+  padding: 20px 30px;
+  border: 5px solid black;
+  text-align: left;
+}
+.ground {
+  background-color: green;
+  width: 250px;
+  height: 240px;
+  padding: 20px 20px;
+  margin: 10px;
+  border: 0px;
+}

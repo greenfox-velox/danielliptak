@@ -4,9 +4,8 @@ div {
   background-color: yellow;
   color: red;
   font-size: 30px;
-  padding: 20px 30px 15px 20px;
+  padding: 20px 30px;
   border: 5px solid black;
   margin-bottom: 10px;
   text-align: left;
-
 }
