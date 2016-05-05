@@ -1,0 +1,22 @@
+h1 {
+  color: blue;
+}
+h2 {
+  color: rgb(223, 168, 39);
+}
+.blue {
+  color: blue;
+}
+ul {
+  color: blue;
+  list-style-type: square;
+}
+.second {
+  list-style-type: disc;
+}
+span {
+  color: red;
+}
+ul ul,ol {
+  color: black;
+}
