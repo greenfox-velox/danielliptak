@@ -1,0 +1,75 @@
+.wraper {
+  border: 1px solid black;
+  max-width: 550px;
+  padding-bottom: 50px;
+}
+img {
+  float: left;
+  margin: 20px;
+}
+.second img {
+  float: right;
+}
+.wraper .first, .second {
+  margin-right: 50px;
+  margin-left: 30px;
+  border-bottom: 2px solid black;
+  text-align: justify;
+  padding: 20px 0px;
+}
+.popup {
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 250px;
+  height: 150px;
+  padding: 0px;
+  position: fixed;
+  background-color: white;
+  top: 110px;
+  left: 155px;
+}
+.quit {
+  border: 1px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  position: absolute;
+  right: 20px;
+  top: -25px
+}
+.upper {
+  display: flex;
+  border-bottom: 2px solid black;
+  color: red;
+  padding-left: 20px;
+}
+.middle {
+  height: 20px;
+  border-bottom: 2px solid black;
+  padding: 20px;
+}
+.last{
+  display: flex;
+  justify-content: flex-end;
+}
+.ok, .cancel {
+  background-color: silver;
+  border-radius: 4px;
+}
+.ok {
+  width: 20px;
+  text-align: center;
+  height: 18px;
+  margin-top: 11px;
+  }
+.cancel {
+  width: 50px;
+  text-align: center;
+  margin-top: 11px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
