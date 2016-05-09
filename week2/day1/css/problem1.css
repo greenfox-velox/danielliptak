@@ -1,0 +1,20 @@
+.wraper {
+  border: 1px solid black;
+  max-width: 380px;
+  margin: auto;
+  padding-bottom: 50px;
+}
+img {
+  float: left;
+  margin: 20px;
+}
+.second img {
+  float: right;
+}
+.wraper > div {
+  margin-right: 50px;
+  margin-left: 30px;
+  border-bottom: 2px solid black;
+  padding: 20px 0px;
+  text-align: justify;
+}
