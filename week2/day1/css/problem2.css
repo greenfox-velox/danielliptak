@@ -1,5 +1,6 @@
 .wraper {
   max-width: 540px;
+  margin: auto;
 }
 .aqua {
   background-color: aqua;
