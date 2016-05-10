@@ -11,45 +11,50 @@
           <form>
             <div class="left">
                 <p>Szemelyes adatok</p>
-                Nev
-                <input type="text">
-                Szuletesi eved
-                <input type="number" placeholder="pl.1984" maxlength="4">
-                Nemed
-                <input type="radio">No <input type="radio">
-                Milyen markat szeretsz?
-                <input type="checkbox" id="Adi">
-                <label for="Adi">Adidas</label>
-                <input type="checkbox" id="opel">
-                <label for="opel">Opel</label>
-                <input type="checkbox" id="apple">
-                <label for="apple">apple</label>
-                <input type="checkbox"id="Ray-Ban">
-                <label for="Ray-Ban">Ray-Ban</label>
-                <input type="checkbox" id="Coca-cola">
-                <label for="Coca-cola">Coca-cola</label>
-                <input type="checkbox" id="Starbucks">
-                <label for="Starbucks">Starbucks</label>
-                <input type="checkbox" id="Mazda">
-                <label for="Mazda">Mazda</label>
-                <input type="checkbox"id="Tesla">
-                <label for="Tesla">Tesla</label>
-                <input type="checkbox" id="Nike">
-                <label for="Nike">Nike</label>
-                <input type="checkbox" id="Yahoo">
-                <label for="Yahoo">Yahoo</label>
+                <label for="name" class="hu">Neved</label>
+                <input type="text" id="name" class="lines">
+                <div class="birthsex">
+                  <div class="birth">
+                    <label for="szuletes" class="title">Szuletesi eved</label>
+                    <input type="number" placeholder="pl.1984" maxlength="4" class="birthyear">
+                  </div>
+                  <div>
+                    <label class="sex title">Nemed</label>
+                    <label for="Wman"><input type="radio">no</label>
+                    <label for="man"><input type="radio">ferfi</label>
+                  </div>
+                </div>
+                <label class="title">Milyen markat szeretsz?</label>
+                <div class="like">
+                  <div class="like1">
+                    <label for="Adi"><input type="checkbox" id="Adi">Adidas</label>
+                    <label for="apple"><input type="checkbox" id="apple">apple</label>
+                    <label for="Coca-cola"><input type="checkbox" id="Coca-cola">Coca-cola</label>
+                    <label for="Mazda"><input type="checkbox" id="Mazda">Mazda</label>
+                    <label for="Nike"><input type="checkbox" id="Nike">Nike</label>
+                  </div>
+                  <div class="like1">
+                    <label for="opel"><input type="checkbox" id="opel">Opel</label>
+                    <label for="Ray-Ban"><input type="checkbox"id="Ray-Ban">Ray-Ban</label>
+                    <label for="Starbucks"><input type="checkbox" id="Starbucks">Starbucks</label>
+                    <label for="Tesla"><input type="checkbox" id="Tesla">Tesla</label>
+                    <label for="Yahoo"><input type="checkbox" id="Yahoo">Yahoo</label>
+                  </div>
+                </div>
             </div>
             <div class="right">
               <p>Kapcsolat</p>
-              Telefonszam
-              <input type="phone" placeholder="+36 -- --- ----">
-              E-mail cim
-              <input type="mail" placeholder="nev@domain.hu">
-              Facebook profilod
-              <input type="mail" placeholder="https://twitter.com/...">
-              Milyen hazban laksz?
-              <select placeholder= "Valassz tipust">
-                <option disabled selected="">Valasz tipust</option>
+              <label for="tel" class="title">Telefonszam</label>
+              <input type="phone" placeholder="+36 -- --- ----" class="lines">
+              <label for="e-mail" class="title">E-mail cim</label>
+              <input type="mail" placeholder="nev@domain.hu" class="lines">
+              <label for="facebook" class="title">Facebook profilod</label>
+              <input type="url" placeholder="https://facebook.com/..."class="lines" id="facebook">
+              <label for="twitter" class="title">Twitter profilod</label>
+              <input type="url" placeholder="https://twitter.com/..."class="lines" id="twitter">
+              <label for="home" class="title">Milyen hazban laksz?</label>
+              <select placeholder= "Valassz tipust" class="lines" id="home">
+                <option disabled selected>Valasz tipust!</option>
                 <option >Panel</option>
                 <option >Csaladi</option>
                 <option >Iker</option>

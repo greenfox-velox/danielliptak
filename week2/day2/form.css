@@ -1,3 +1,6 @@
+.* {
+  font-family: Helvetica;
+}
 .wraper {
   width: 620px;
   margin: auto;
@@ -14,8 +17,38 @@ p {
   margin: 0px;
   background-color: grey;
   color: white;
+  border-radius: 2px;
+}
+.lines {
+  width: 300px;
+  margin-bottom: 20px;
+}
+.birthyear {
+  width: 80px;
+}
+.birthsex {
+  display: flex;
+  justify-content: space-between;
+}
+.left {
+  margin-right: 20px;
+}
+.sex {
+  display: block;
+  width: 150px;
+}
+.like1 {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1
+}
+.like1 label {
+  margin: 4px 0px;
+}
+.like {
+  display: flex;
+  justify-content: space-between;
 }
 input {
-  width: 300px;
-  margin-bottom: 15px;
+  border-radius: 2px;
 }
