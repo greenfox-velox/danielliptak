@@ -7,7 +7,7 @@
   background-color: silver;
   padding: 100px;
 }
-form {
+.upperpart {
   display: flex;
   justify-content: space-between;
 }
@@ -22,6 +22,7 @@ p {
 .lines {
   width: 300px;
   margin-bottom: 20px;
+  height: 25px;
 }
 .birthyear {
   width: 80px;
@@ -51,4 +52,18 @@ p {
 }
 input {
   border-radius: 2px;
+}
+.down {
+  display: block;
+}
+.textarea {
+  width: 620px;
+  height: 170px;
+}
+.footer {
+  display: flex;
+}
+.clear {
+  justify-content: flex-end;
+
 }
