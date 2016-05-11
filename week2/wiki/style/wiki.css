@@ -13,13 +13,14 @@ body {
 }
 main {
   height: 5465px;
-  background-color: blue;
+  background-color: white;
 }
 aside {
   width: 180px;
 }
 .main {
   display: block;
+  width: 100%;
 }
 header {
   height: 80px;
@@ -34,4 +35,10 @@ header {
 }
 .sidebar p {
   border-top: 1px solid grey;
+}
+h1 {
+  border-bottom: 2px solid black;
+}
+.text-and-picture {
+  display: flex;
 }
