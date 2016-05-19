@@ -8,13 +8,13 @@ class stack():
     def __init__(self, list):
         self.list = list
     def size(self):
-        
+
     def push(self, extra):
         self.list += [extra]
         return self.list
     def pop(self):
         pass
-
+# git stash test
 
 list = [1, 3, 4, 5, 2, 8]
 Elements = stack(list)
