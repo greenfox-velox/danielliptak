@@ -6,7 +6,7 @@
   background-color: aqua;
   height: 100px;
 }
-.orange {
+.orange, .purple {
   background-color: orange;
   height: 500px;
   width: 100px;
@@ -18,12 +18,10 @@
   margin: 0px 20px;
   position: relative;
 }
-.purple{
+.purple {
   background-color: purple;
-  height: 500px;
-  width: 100px;
 }
-.blue{
+.blue {
   background-color: blue;
   height: 100px;
 }

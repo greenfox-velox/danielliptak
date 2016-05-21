@@ -4,9 +4,6 @@ h1 {
 h2 {
   color: rgb(223, 168, 39);
 }
-.blue {
-  color: blue;
-}
 ul {
   color: blue;
   list-style-type: square;
@@ -14,9 +11,10 @@ ul {
 .second {
   list-style-type: disc;
 }
-span {
+.colour {
   color: red;
 }
-ul ul,ol {
+ul ul,
+ol {
   color: black;
 }
