@@ -14,7 +14,7 @@ class stack():
         return self.list
     def pop(self):
         pass
-# git stash test
+
 
 list = [1, 3, 4, 5, 2, 8]
 Elements = stack(list)
