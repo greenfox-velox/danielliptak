@@ -20,7 +20,7 @@
 #
 # Captain = pirate()
 
-class pirate():
+class Pirate():
     def __init__(self):
         self.rum = 0
     def drink_rum(self):

@@ -4,7 +4,7 @@
 # It should have a `pop` method that returns the last element form the stack and also deletes it from it
 
 # please don`t use the built in methods
-class stack():
+class Stack():
     def __init__(self, list):
         self.list = list
     def size(self):

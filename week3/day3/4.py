@@ -3,7 +3,7 @@
 # an other method `get_average`, that returns the average of the
 # gradesn
 
-class student():
+class Student(object):
     def __init__ (self):
         self.gradelist = []
     def add_grade(self, grade):

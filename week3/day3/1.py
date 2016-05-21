@@ -3,7 +3,6 @@
 # It should have a `get_area` method that returns it's area
 
 class Circle():
-    pi = 3.1415
     def __init__(self, radius):
         self.radius = radius
     def get_circumference(self):
