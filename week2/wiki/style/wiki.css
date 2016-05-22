@@ -16,6 +16,41 @@ main {
   background-color: white;
   margin-right: 0px;
 }
+.profile {
+  width: 270px;
+  height: 520px;
+  border: 1px solid grey;
+  margin: 15p 25px 25px 15px;
+  overflow: visible;
+  font-family: sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+}
+.profile .name {
+  font-size: 15px;
+  margin: 8px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.profile .after_picture {
+  line-height: 6px;
+}
+.profile img {
+  margin: 0 25px;
+  height: 280px;
+  width: 220px;
+}
+.profile p {
+  text-align: center;
+  margin: 0;
+}
+.profile table {
+  text-align: left;
+  margin: 10px;
+}
+.profile th {
+  vertical-align: top;
+}
 aside {
   width: 180px;
 }
