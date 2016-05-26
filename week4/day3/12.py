@@ -6,18 +6,29 @@ width = 300
 height = 300
 canvas = Canvas(root, width = width, height = height)
 canvas.pack()
-
+num = 0
+startx = 0
+starty = 0
+endy = 20
+endx = startx + 20
 
 def line_maker():
-  num = 0
-  start = 0
-  end = 20
-  while num < width:
-    line = canvas.create_rectangle(start, start, end, end)
-    start += num
-    end += num
+  endx = startx + 20
+  while endx <= width:
+    line = canvas.create_rectangle(startx, starty, endx, endy)
+    row_maker(line)
+    startx == endx
+    endx += 20
     print(line)
-    num += 20
+
+def row_maker(line):
+  endy = 20
+  while endy <= height:
+    line = canvas.create_rectangle(startx, starty, endx, endy)
+    starty == endy
+    endy += 20
+    print(line)
+
 
 line_maker()
 root.mainloop()
