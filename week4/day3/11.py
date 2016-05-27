@@ -5,7 +5,7 @@
 # and draws a square of that size and color to the center of the canvas.
 # create a loop that fills the canvas with rainbow colored squares.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 width = 300
 height = 300

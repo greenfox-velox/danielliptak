@@ -4,7 +4,7 @@
 # and draws a 50 long horizontal line from that point.
 # draw 3 lines with that function.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 root.title('3 50 long lines')
 width = 300

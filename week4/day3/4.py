@@ -4,7 +4,7 @@
 # and draws a line from that point to the center of the canvas.
 # draw 3 lines with that function.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 width = 300
 height = 300

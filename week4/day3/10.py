@@ -5,7 +5,7 @@
 # and draws a square of that size to the center of the canvas.
 # create a loop that draws 20 squares with that function.
 
-from Tkinter import *
+from tkinter import *
 root = Tk()
 width = 300
 height = 300
