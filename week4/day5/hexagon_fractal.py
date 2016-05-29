@@ -21,7 +21,7 @@ def create_fractal(x, y, size):
     create_fractal(x-size/3, y+2*(sqrt(3)/2)*size/3, size/3)
     create_fractal(x, y+4*(sqrt(3)/2)*size/3, size/3)
     create_fractal(x+2*(size/3), y+4*(sqrt(3)/2)*size/3, size/3)
-    create_fractal(x+(size/3), y+2*(sqrt(3)/2)*size/3, size/3)
+    # create_fractal(x+(size/3), y+2*(sqrt(3)/2)*size/3, size/3)
 
 
 create_fractal(160, 10, 300)
