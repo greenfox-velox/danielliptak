@@ -28,12 +28,16 @@ def is_vovel(char):
   if not type(char) is str:
     return False
   else:
-    return char.lower() in 'aeuouöüóőúéáű'
+    return char.lower() in 'iaeuouöüóőúéáű'
 
 # Create a method that translates hungarian into the teve language
 def translate(hungarian):
     teve = hungarian
+    translated_teve = ''
     for char in teve:
         if is_vovel(char):
-            teve = (char+'v'+char).join(teve.split(char))
-    return teve
+            translated_teve += char+'v'+char
+        else:
+            translated_teve += char
+
+    return translated_teve
