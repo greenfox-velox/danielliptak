@@ -41,14 +41,14 @@ def read_csv():
             temp_csv.append(row)
         return temp_csv
 
-def add_task():
+def add_task(command_order):
     with open('todo.csv', 'a') as csvfile:
         writeable_csv = csv.writer(csvfile, delimiter=';')
-        writeable_csv.writerow(['', sys.argv[2]])
+        writeable_csv.writerow(['', command_order[2]])
 
-def marker():
+def marker(command_order):
     temp_csv = read_csv()
-    temp_csv[int(sys.argv[2])-1][0] = 'x'
+    temp_csv[int(command_order[2])-1][0] = 'x'
     with open('todo.csv', 'w') as csvfile:
         writeable_csv = csv.writer(csvfile, delimiter=';')
         for i in range(len(temp_csv)):
@@ -60,11 +60,11 @@ def list_orders():
     else:
         return 'No todos for today! :)'
 
-def marking_orders():
+def marking_orders(command_order):
     try:
-        if int(sys.argv[2]) <= len(read_csv()):
-            marker()
-        elif int(sys.argv[2]) > len(read_csv()):
+        if int(command_order[2]) <= len(read_csv()):
+            marker(command_order)
+        elif int(command_order[2]) > len(read_csv()):
             return 'Unable to remove: Index is out of bound'
         else:
             return 'Unsupported argument'
@@ -73,11 +73,11 @@ def marking_orders():
     except IndexError:
         return 'Unable to check: No index is provided'
 
-def remove_orders():
+def remove_orders(command_order):
     try:
-        if int(sys.argv[2]) <= len(read_csv()):
+        if int(command_order[2]) <= len(read_csv()):
             remove_task()
-        elif int(sys.argv[2]) > len(read_csv()):
+        elif int(command_order[2]) > len(read_csv()):
             return 'Unable to remove: Index is out of bound'
         else:
             return 'Unsupported argument'
