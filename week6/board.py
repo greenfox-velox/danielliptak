@@ -2,25 +2,17 @@ from tkinter import *
 from tiles import *
 
 class Board(object):
-    def __init__(self, canvas, wall_pic, floor_pic):
+    def __init__(self, canvas, map1, wall_pic, floor_pic):
         self.size = 72
+        self.table = map1
         self.wall_pic = wall_pic
         self.floor_pic = floor_pic
         self.canvas = canvas
         self.create_board()
         self.draw_board()
+
     def create_board(self):
         self.board_lista = list()
-        self.table =[[0,0,1,0,0,0,0,0,0,0],
-                [0,0,1,0,0,1,1,1,0,1],
-                [0,1,0,0,0,1,1,1,0,1],
-                [0,1,0,0,0,1,0,0,0,1],
-                [0,1,1,1,1,1,0,1,0,1],
-                [0,0,0,0,0,0,0,1,0,1],
-                [0,1,1,1,1,1,1,1,0,1],
-                [0,1,0,0,0,1,1,1,0,1],
-                [0,1,0,0,0,0,0,0,0,0],
-                [0,0,0,0,0,1,1,1,0,1]]
         for y in range(10):
             row = list()
             for x in range(10):
@@ -36,4 +28,4 @@ class Board(object):
                 tile.draw()
 
     def get_accessable(self, y, x):
-        return self.table[y][x]
+        return x >= 0 and x < 10 and y >= 0 and y < 10 and self.table[y][x] == 0

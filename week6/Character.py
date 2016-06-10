@@ -1,53 +1,52 @@
 from tkinter import *
+from random import randint
 
 class Character(object):
-    def __init__(self, x, y, canvas, level):
+    def __init__(self, x, y, canvas, max_hp, DP, SP):
         self.y = y
         self.x = x
         self.canvas = canvas
-        self.level = level
+        self.max_hp = max_hp
+        self.dp = DP
+        self.sp = SP
     def draw_character(self, pic):
         self.canvas.create_image(self.x * 72, self.y * 72, anchor=NW, image=pic)
 
 class Hero(Character):
-    def __init__(self, x, y, canvas, level, hero_down, hero_up, hero_right, hero_left):
-        super().__init__(x, y, canvas, level)
-        self.hero_down = hero_down
-        self.hero_up = hero_up
-        self.hero_right = hero_right
-        self.hero_left = hero_left
-        self.draw_character(self.hero_down)
+    def __init__(self, x, y, canvas, max_hp, DP, SP, pic):
+        super().__init__(x, y, canvas, max_hp, DP, SP)
+        self.draw_character(pic)
+        self.current_hp = self.max_hp
 
-    def move_rout(self, key):
-        if key.keysym == "Down":
-            if self.level.get_accessable(self.y + 1, self.x) == 1:
-                self.draw_character(self.hero_down)
-            else:
-                self.y += 1
-                self.draw_character(self.hero_down)
+    def move_char(self, direction, pic):
+        if direction == 'down':
+            self.y += 1
+            self.draw_character(pic)
+        elif direction == 'up':
+            self.y -= 1
+            self.draw_character(pic)
+        elif direction == 'right':
+            self.x += 1
+            self.draw_character(pic)
+        elif direction == 'left':
+            self.x -= 1
+            self.draw_character(pic)
 
-        elif key.keysym == "Up":
-            if self.level.get_accessable(self.y - 1, self.x) == 1:
-                self.draw_character(self.hero_up)
-            else:
-                self.y -= 1
-                self.draw_character(self.hero_up)
-        elif key.keysym == "Right":
-            if self.level.get_accessable(self.y, self.x + 1) == 1:
-                self.draw_character(self.hero_right)
-            else:
-                self.x += 1
-                self.draw_character(self.hero_right)
-
-        elif key.keysym == "Left":
-            if self.level.get_accessable(self.y, self.x - 1) == 1:
-                self.draw_character(self.hero_left)
-            else:
-                self.x -= 1
-                self.draw_character(self.hero_left)
+    def __str__(self):
+            return 'Hero     (Level{})     HP: {}/{} |   DP:{},   |   SP: {}'.format(1,self.max_hp, self.current_hp, self.dp, self.sp)
 
 class Skeleton(Character):
-    def __init__(self, x, y, canvas, level, skeleton):
-        super().__init__(x, y, canvas, level)
+    def __init__(self,x ,y, canvas, max_hp, DP, SP, skeleton):
+        super().__init__(x, y, canvas, max_hp, DP, SP)
         self.skeleton = skeleton
         self.draw_character(self.skeleton)
+        self.x = x
+        self.y = y
+
+class Boss(Character):
+    def __init__(self, x, y, canvas, max_hp, DP, SP, boss):
+        super().__init__(x, y, canvas, max_hp, DP, SP)
+        self.boss = boss
+        self.draw_character(self.boss)
+        self.x = x
+        self.y = y
