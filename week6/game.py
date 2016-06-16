@@ -26,9 +26,7 @@ class Game():
                 [0,1,0,0,0,0,0,0,0,0],
                 [0,0,0,0,0,1,1,1,0,1]]
         self.level = Board(self.canvas, self.map1, self.wall, self.floor)
-        self.Aladin = Hero(0, 0, self.canvas, 100, 40, 60, self.hero_down)
-        self.status = self.Aladin.__str__()
-        self.draw_status_bar()
+        self.Aladin = Hero(self.canvas, self.hero_down)
         self.skeleton1_id = self.random_gen()
         self.skeleton1 = Skeleton(self.skeleton1_id[1], self.skeleton1_id[0], self.canvas,100, 40, 60, self.skeleton)
         self.skeleton2_id = self.random_gen()
@@ -37,6 +35,8 @@ class Game():
         self.skeleton3 = Skeleton(self.skeleton3_id[1], self.skeleton3_id[0], self.canvas,100, 40, 60, self.skeleton)
         self.boss_id = self.random_gen()
         self.bigboss = Boss(self.boss_id[1], self.boss_id[0], self.canvas,100, 40, 60, self.boss)
+        self.status = self.Aladin.__str__()
+        self.draw_status_bar()
 
     def random_gen(self):
         b = randint(0,9)
@@ -56,19 +56,19 @@ class Game():
 
     def move_hero(self, key):
         if key.keysym == 'Down':
-            if self.level.get_accessable(self.Aladin.y + 1, self.Aladin.x) == True:
+            if self.level.get_accessable(self.Aladin.y + 1, self.Aladin.x):
                 self.Aladin.move_char('down', self.hero_down)
             else:
                 self.Aladin.draw_character(self.hero_down)
 
         elif key.keysym == 'Up':
-            if self.level.get_accessable(self.Aladin.y - 1, self.Aladin.x) == True:
+            if self.level.get_accessable(self.Aladin.y - 1, self.Aladin.x):
                 self.Aladin.move_char('up', self.hero_up)
             else:
                 self.Aladin.draw_character(self.hero_up)
 
         elif key.keysym == 'Right':
-            if self.level.get_accessable(self.Aladin.y, self.Aladin.x + 1) == True:
+            if self.level.get_accessable(self.Aladin.y, self.Aladin.x + 1):
                 self.Aladin.move_char('right', self.hero_right)
             else:
                 self.Aladin.draw_character(self.hero_right)
