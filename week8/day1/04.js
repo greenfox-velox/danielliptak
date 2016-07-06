@@ -1,30 +1,22 @@
 'use strict';
 
-// Automated CarPark system
-//
-// All the dates in this examples should be stored as a number
-// The milliseconds lasted from 1970-01-01
-//
-
-var Car = (function() {
+var Car = ( function() {
   var Id = 0;
-  return function Car(type, colour, balance) {
+  return function car(type, colour, balance) {
     this.Id = Id++;
     this.types = type;
     this.colour = colour;
     this.balance = balance;
-    this.enters = [];
+    this.enterDate = 0;
   };
 })();
 
-
 Car.prototype.enter = function (enterDate) {
-  this.enters.push(enterDate.getTime());
-  return this.enters;
+  this.enterDate = enterDate.getTime();
 };
 
 Car.prototype.getEnterDate = function () {
-  return this.enters[this.enters.length - 1];
+  return this.enterDate;
 };
 
 Car.prototype.leave = function (price) {
@@ -32,9 +24,8 @@ Car.prototype.leave = function (price) {
 };
 
 Car.prototype.getStats = function () {
-  return 'Type: ' + this.types +', Colour: ' + this.colour + ', Balance: ' + this.balance;
+  return 'Type: ' + this.types + ', Colour: ' + this.colour + ', Balance: ' + this.balance;
 };
-
 
 var Volvo = new Car('volvo', 'red', 4000);
 var Merci = new Car('merci', 'black', 6000);
@@ -43,6 +34,8 @@ console.log(Volvo.enter(new Date()));
 console.log(Volvo.enter(new Date()));
 console.log(Volvo.getStats());
 
+
+
 function CarPark(income, startTime) {
   this.startTime = startTime;
   this.income = income;
@@ -50,22 +43,23 @@ function CarPark(income, startTime) {
 }
 CarPark.prototype.carEnter = function (car) {
   this.storedCars.push(car);
-  car.enter(this.startTime);
 };
 
 CarPark.prototype.carLeave = function (id) {
   //  - It should remove the car with the given id and it should charge from its balance
 
-  var leavingcarindex = this.storedCars.findIndex(function (e, i) {
-    return e.Id === id;
-  });
+  var leavingcarindex = this.storedCars.findIndex((e) => e.Id === id);
+  var t = new Date;
+  var enddate = t.getTime();
+  var spentTimeinHours = (enddate - this.storedCars[leavingcarindex].getEnterDate()) / 3600000;
+  var fee = Math.floor(spentTimeinHours) * 40;
+  this.storedCars[leavingcarindex].leave(fee);
+  this.balance += fee;
   this.storedCars.splice(leavingcarindex, leavingcarindex + 1);
-  return this.storedCars;
 };
-// CarPark.prototype.elapseTime = function (hours) {
-//   //  - It should increment the time with the hours
-//
-// };
+CarPark.prototype.elapseTime = function (hours) {
+  this.time += hours;
+};
 
 var RozsaUtca = new CarPark(4000, new Date());
 
@@ -73,9 +67,8 @@ RozsaUtca.carEnter(Volvo);
 RozsaUtca.carEnter(Merci);
 
 console.log(RozsaUtca.storedCars);
-console.log(RozsaUtca.carLeave(0));
+Volvo.enter(new Date);
 
-// The parking fee: 40 per hours (only every whole hour)
 
 // Optional Methods:
 //
