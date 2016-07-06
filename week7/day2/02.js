@@ -7,4 +7,4 @@ function apply(print) {
   print('apple');
 }
 
-apply(console.log) // should log apple
+apply(console.log); // should log apple
