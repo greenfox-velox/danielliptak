@@ -1,30 +1,28 @@
-// 
-// function addCheckBox(id) {
-//   debugger
-//   var todoline = document.querySelector('li');
-//   var newCheckbox = document.createElement('input');
-//   newCheckbox.type = 'checkbox';
-//   todoline.appendChild(newCheckbox);
-// }
+var url = 'https://mysterious-dusk-8248.herokuapp.com/todos';
+
+function addCheckBox() {
+  var todoline = document.querySelectorAll('li');
+  for (var i = 0; i < todoline.length; i++) {
+    var newCheckbox = document.createElement('input');
+    var button = document.createElement('button');
+    newCheckbox.type = 'checkbox';
+    button.classList.value = 'deletebutton';
+    todoline[i].appendChild(button);
+    todoline[i].appendChild(newCheckbox);
+  }
+}
 
 function drawTodo(response) {
   var todoList = JSON.parse(response);
-  todoList.forEach(function (item, index, object, drawCheckBox) {
+  todoList.forEach(function (item, index, object) {
     var newItem = document.createElement('li');
     newItem.textContent = item.text;
     newItem.id = item.id;
     console.log(newItem.id);
     document.querySelector('ul').appendChild(newItem);
-    // addCheckBox(newItem.id);
   });
+  addCheckBox();
 }
- // function drawCheckBox() {
- //
- // }
-
-
-
-var url = 'https://mysterious-dusk-8248.herokuapp.com/todos';
 
 function xhrRequest(method, url, data, cb) {
   var xhr = new XMLHttpRequest();
@@ -49,13 +47,6 @@ function getToDoList() {
     drawTodo(response);
   });
 }
-
-// function getToDoList() {
-//   var xhr = new XMLHttpRequest();
-//   xhr.onload = function () { drawTodo(xhr); };
-//   xhr.open('GET', 'https://mysterious-dusk-8248.herokuapp.com/todos', true);
-//   xhr.send();
-// }
 
 function add() {
   var sentence = document.querySelector('.rawText').value;
