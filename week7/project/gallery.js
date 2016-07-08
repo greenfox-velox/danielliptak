@@ -4,12 +4,10 @@ var picList =
 ['images/1.png',
 'images/2.gif',
 'images/3.gif',
-'images/4.png',
-'images/5.png',
-'images/6.png',
-'images/7.png',
-'images/8.png',
-'images/last.png',
+'images/xhrrequest.png',
+'images/callback.png',
+'images/next.png',
+'images/eventlistener.png',
 ];
 
 function Galery(pic) {
