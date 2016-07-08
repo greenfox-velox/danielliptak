@@ -1,5 +1,5 @@
 'use strict';
-
+cd 
 // create a function that has 2 paramteres
 //  - fileNames: an array of filenames
 //  - callback
@@ -22,8 +22,8 @@ function countWords(filename, cb) {
         var fileWords = String(word).split(/\s/g).reduce(function(acc, e){
           acc += e;
           return acc
-        }, '')
-        contentList.push(fileWords)
+        }, '');
+        contentList.push(fileWords);
         cb(null, contentList.join(''));
       }
     )})

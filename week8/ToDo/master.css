@@ -1,11 +1,118 @@
+body {
+  background: #50e3c2;
+}
+
+.rawText {
+  width: 80%;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
+form {
+  border: 2px solid silver;
+  width: 350px;
+  margin: 20px auto;
+  display: flex;
+}
+
+main {
+  background: #f7f7f7;
+  width: 500px;
+  margin: 50px auto;
+}
+
 #button {
   background: none;
   color: blue;
 }
+
 .deletebutton {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   background: none;
-  background-image: url(http://www.pngall.com/wp-content/uploads/2016/06/Trash-Can.png);
+  border: none;
+  background-image: url(Trash-Can.png);
   background-size: cover;
+}
+
+.heading {
+    font-family: Lato-Light, sans-serif;
+    font-size: 64px;
+    color: #9b9b9b;
+}
+
+.todo-item {
+    font-family: Lato-Regular, sans-serif;
+    font-size: 26px;
+    line-height: 2.2;
+    color: #9b9b9b;
+    padding-left: 50px;
+}
+
+.button-text {
+    font-family: Lato-Regular, sans-serif;
+    font-size: 26px;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    width: 20%;
+    background-color: #df69e8;
+}
+
+.roundedTwo {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  margin: 0;
+  background: #fcfff4;
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.roundedTwo label {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  cursor: pointer;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+  border-radius: 50px;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+}
+.roundedTwo label:after {
+  content: '';
+  width: 9px;
+  height: 5px;
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  border: 3px solid #fcfff4;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+.roundedTwo label:hover::after {
+  opacity: 0.3;
+}
+.roundedTwo input[type=checkbox] {
+  visibility: hidden;
+}
+.roundedTwo input[type=checkbox]:checked + label:after {
+  opacity: 1;
 }
