@@ -5,11 +5,8 @@ var bodyParser = require('body-parser')
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-// app.use('/', express.static('public'))
+app.use(express.static('./public'))
 
-app.use(function(err, req, res, next) {
-   res.status(404);
-});
 
 // HTTP/1.1 404 Not Found
 // X-Powered-By: Express
@@ -41,8 +38,13 @@ app.get('/todos', function(req, res) {
   res.send(todos);
 });
 
-app.get('/todos/:id', function(req, res){
-  res.send(todos.filter(item => item.id === +req.params.id));
+app.get('/todos/:id', function(req, res, next){
+  var num = todos.findIndex(function(item){return item.id === +req.params.id})
+  if (num < 0){
+    return next(404);
+  } else {
+    res.send(todos[num])
+  }
 });
 
 app.post('/todos', function(req, res){
@@ -72,3 +74,7 @@ app.delete('/todos/:id', function(req, res){
 });
 
 app.listen(3000);
+
+app.use(function(err, req, res, next) {
+   res.status(404);
+});
