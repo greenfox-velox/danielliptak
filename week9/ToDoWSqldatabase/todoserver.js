@@ -26,7 +26,6 @@ var con = mysql.createConnection({
 app.get('/todos', function (req, res) {
   con.query('SELECT * FROM ToDO;',function(err, rows){
     if (err) {
-      console.log(err.toString());
       return;
     }
     res.send(rows);
@@ -44,8 +43,7 @@ app.get('/todos', function (req, res) {
 app.post('/todos', function(req, res){
   con.query('INSERT into ToDO (text) VALUES ("'+ req.body.text +'");',
   function (err, row) {
-    if (err) {
-      console.log(err.toString());
+    if (err) {);
       return;
     }
     req.body.id = row.insertId;
@@ -60,6 +58,7 @@ app.post('/todos', function(req, res){
 //   res.send(todo);
 // })
 //
+
 app.delete('/todos/:id', function(req, res){
   con.query('Delete from ToDO Where id =' + req.params.id + ';',
   function (err, row) {

@@ -45,8 +45,8 @@ function xhrRequest(method, url, data, type, cb) {
   xhr.setRequestHeader(type, 'application/json');
   xhr.send(data);
   xhr.onload = function () {
-    var status = xhr.status;
-    if (status === 200) {
+    var readyState = xhr.readyState;
+    if (readyState === 4) {
       cb(JSON.parse(xhr.response));
     } else {
       cb(JSON.parse(xhr.response));
@@ -75,7 +75,6 @@ function add() {
 }
 
 function remove(id) {
-  console.log(id);
   var removeUrl = 'http://localhost:3000/todos/' + id.substring(1, id.length);
   var removeType = 'Accept';
   var method = 'DELETE';
@@ -102,7 +101,6 @@ function dealToDo(event) {
   if (event.target.className === 'deletebutton') {
     remove(event.target.parentNode.id);
   } else if (event.target.className === 'roundedTwo') {
-    console.log(event);
     makeDone(event);
   }
 }
