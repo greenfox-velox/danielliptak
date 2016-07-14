@@ -26,7 +26,7 @@ var con = mysql.createConnection({
 app.get('/todos', function (req, res) {
   con.query('SELECT * FROM ToDO;',function(err, rows){
     if (err) {
-      res.status(404);
+      res.sendStatus(404);
     }
     res.send(rows);
   });
@@ -35,7 +35,7 @@ app.get('/todos', function (req, res) {
 app.get('/todos/:id', function (req, res) {
   con.query('SELECT * FROM ToDO WHERE id = ' + req.params.id + ';',function(err, rows){
     if (err) {
-      res.sendStatus(404);
+      console.log(err.toString());
       return
     }
     res.send(rows);
@@ -46,10 +46,11 @@ app.post('/todos', function(req, res){
   con.query('INSERT into ToDO (text) VALUES ("'+ req.body.text +'");',
   function (err, row) {
     if (err) {;
-      return;
+      res.sendStatus(404);
     }
     req.body.id = row.insertId;
     res.send(req.body);
+    con.end();
   });
 });
 
@@ -57,8 +58,7 @@ app.put('/todos/:id', function(req, res){
   con.query('Update ToDO SET completed = ' + req.body.completed + ', text = "' + req.body.text + '" WHERE id = ' + req.params.id + ';',
   function (err, row) {
     if (err) {
-      console.log(err.toString());
-      return;
+      res.sendStatus(404);
     }
     req.body.id = req.params.id;
     res.send(req.body);

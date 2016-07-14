@@ -23,6 +23,10 @@ li {
   opacity: 0.6;
 }
 
+.textInListLine {
+  flex-grow: 1;
+}
+
 form {
   border: 2px solid silver;
   width: 350px;
