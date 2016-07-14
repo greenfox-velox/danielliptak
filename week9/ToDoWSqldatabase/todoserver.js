@@ -11,7 +11,7 @@ app.use(express.static('./public'));
 var con = mysql.createConnection({
   host: 'localhost',
   user: "'root'",
-  password: '',
+  password: 'Szinyeim_06',
   database: 'todo',
 });
 
@@ -45,12 +45,11 @@ app.get('/todos/:id', function (req, res) {
 app.post('/todos', function(req, res){
   con.query('INSERT into ToDO (text) VALUES ("'+ req.body.text +'");',
   function (err, row) {
-    if (err) {;
+    if (err) {
       res.sendStatus(404);
     }
     req.body.id = row.insertId;
     res.send(req.body);
-    con.end();
   });
 });
 
