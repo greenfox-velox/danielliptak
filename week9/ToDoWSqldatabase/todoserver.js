@@ -3,6 +3,7 @@
 var mysql = require('mysql');
 var express = require('express');
 var bodyParser = require('body-parser');
+// var winston = require('winston');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -11,32 +12,26 @@ app.use(express.static('./public'));
 var con = mysql.createConnection({
   host: 'localhost',
   user: "'root'",
-  password: 'Szinyeim_06',
+  password: 'almafa',
   database: 'todo',
 });
 
-// HTTP/1.1 404 Not Found
-// X-Powered-By: Express
-// Content-Type: application/json; charset=utf-8
-// Content-Length: 26
-// ETag: W/'1a-k6qNFtmn7O8atwPHaaY6DA'
-// Date: Sat, 09 Jan 2016 18:29:55 GMT
-// Connection: keep-alive
 
-app.get('/todos', function (req, res) {
+app.get('/todos', function (req, res, next) {
   con.query('SELECT * FROM ToDO;',function(err, rows){
-    if (err) {
-      res.sendStatus(404);
+    if (err || rows.length === 0) {
+      next();
+      return;
     }
     res.send(rows);
   });
 });
 
-app.get('/todos/:id', function (req, res) {
+app.get('/todos/:id', function (req, res, next) {
   con.query('SELECT * FROM ToDO WHERE id = ' + req.params.id + ';',function(err, rows){
-    if (err) {
-      console.log(err.toString());
-      return
+    if (err || rows.length === 0) {
+      next();
+      return;
     }
     res.send(rows);
   });
@@ -57,7 +52,7 @@ app.put('/todos/:id', function(req, res){
   con.query('Update ToDO SET completed = ' + req.body.completed + ', text = "' + req.body.text + '" WHERE id = ' + req.params.id + ';',
   function (err, row) {
     if (err) {
-      res.sendStatus(404);
+      res.status(404);
     }
     req.body.id = req.params.id;
     res.send(req.body);
@@ -78,6 +73,6 @@ app.delete('/todos/:id', function(req, res){
 
 app.listen(3000);
 
-// app.use(function(err, req, res, next) {
-//    res.status(404);
-// });
+app.use(function(req, res, next) {
+  res.send([{ "text": "BEERTIME" }]);
+});

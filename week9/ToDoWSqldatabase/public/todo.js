@@ -1,13 +1,22 @@
 var mainApp = {
 
   counter: 0,
-  url: 'http://localhost:3000/todos/',
+  url: 'http://10.18:3000/todos/',
+  listHolder: document.querySelector('ul'),
+  button: document.querySelector('button'),
 
   createTodoText(responsedTodo, ListElement) {
     const textDiv = document.createElement('div');
     textDiv.textContent = responsedTodo.text;
     textDiv.classList.value = 'textInListLine';
-    ListElement.appendChild(textDiv);
+    if (responsedTodo.text === 'Presentation') {
+      const link = document.createElement('a');
+      link.setAttribute('href', 'http://danielliptak.github.io/project/');
+      link.appendChild(textDiv);
+      ListElement.appendChild(link)
+    } else
+      { ListElement.appendChild(textDiv);
+    }
   },
 
   createCheckbox(responsedTodo, ListElement) {
@@ -32,16 +41,17 @@ var mainApp = {
   },
 
   createToDoLine(oneToDo) {
-    const NewLiElement = document.createElement('li');
-    NewLiElement.id = 'i' + oneToDo.id;
-    NewLiElement.classList.value = 'todo-item';
+    const newLiElement = document.createElement('li');
+    newLiElement.id = 'i' + oneToDo.id;
+    // newLiElement.setAttribute('data-id', oneToDo.id);
+    newLiElement.classList.value = 'todo-item';
     if (oneToDo.completed) {
-      NewLiElement.classList.add('checked');
+      newLiElement.classList.add('checked');
     }
-    mainApp.createTodoText(oneToDo, NewLiElement);
-    mainApp.createDellButt(oneToDo, NewLiElement);
-    mainApp.createCheckbox(oneToDo, NewLiElement);
-    document.querySelector('ul').appendChild(NewLiElement);
+    mainApp.createTodoText(oneToDo, newLiElement);
+    mainApp.createDellButt(oneToDo, newLiElement);
+    mainApp.createCheckbox(oneToDo, newLiElement);
+    document.querySelector('ul').appendChild(newLiElement);
   },
 
   drawTodo(todoList) {
@@ -64,28 +74,24 @@ var mainApp = {
   },
 
   getToDoList() {
-    const method = 'GET';
-    const getType = 'Accept';
-    mainApp.xhrRequest(method, mainApp.url, {}, getType, function (response) {
+    mainApp.xhrRequest('GET', mainApp.url, {}, 'Accept', function (response) {
       mainApp.drawTodo(response);
     });
   },
 
   add() {
-    const sentence = document.querySelector('.rawText').value;
-    const data = JSON.stringify({ text: String(sentence) });
-    const method = 'POST';
-    const addType = 'Content-Type';
-    mainApp.xhrRequest(method, mainApp.url, data, addType, function (response) {
+    const data = JSON.stringify(
+      {
+        text: String(document.querySelector('.rawText').value),
+      });
+    mainApp.xhrRequest('POST', mainApp.url, data, 'Content-Type', function (response) {
       mainApp.createToDoLine(response);
     });
   },
 
   remove(id) {
     const removeUrl = this.url + id.substring(1, id.length);
-    const removeType = 'Accept';
-    const method = 'DELETE';
-    mainApp.xhrRequest(method, removeUrl, {}, removeType, function (response) {
+    mainApp.xhrRequest('DELETE', removeUrl, {}, 'Accept', function (response) {
       const todoList = document.querySelector('ul');
       todoList.removeChild(document.querySelector('#' + id));
     });
@@ -95,26 +101,23 @@ var mainApp = {
     const sentenceText = event.target.parentNode.previousSibling.previousSibling.textContent;
     const id = event.target.parentNode.parentNode.id;
     const data = JSON.stringify({ text: String(sentenceText), completed: event.target.checked });
-    const method = 'PUT';
-    const typeMakeDone = 'Content-Type';
     const putUrl = this.url + id.substring(1, id.length);
-    mainApp.xhrRequest(method, putUrl, data, typeMakeDone, function (response) {
+    mainApp.xhrRequest('PUT', putUrl, data, 'Content-Type', function (response) {
       document.querySelector('#' + id).classList.toggle('checked');
     });
   },
 
-  dealToDo: function (event) {
+  dealToDo(event) {
     if (event.target.className === 'deletebutton') {
       mainApp.remove(event.target.parentNode.id);
     } else if (event.target.className === 'roundedTwo' && event.target.type === 'checkbox') {
       mainApp.makeDone(event);
     }
   },
-  listHolder: document.querySelector('ul'),
-  button: document.querySelector('button'),
+  init() {
+    mainApp.listHolder.addEventListener('click', mainApp.dealToDo);
+    mainApp.button.addEventListener('click', mainApp.add);
+    mainApp.getToDoList();
+  },
 };
-
-mainApp.listHolder.addEventListener('click', mainApp.dealToDo);
-mainApp.button.addEventListener('click', mainApp.add);
-
-mainApp.getToDoList();
+mainApp.init();
