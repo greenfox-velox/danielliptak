@@ -1,5 +1,4 @@
 'use strict';
-cd 
 // create a function that has 2 paramteres
 //  - fileNames: an array of filenames
 //  - callback
@@ -16,6 +15,7 @@ function countWords(filename, cb) {
       return cb(err);
     }
     var fileNameList = String(rawContent).split(/\s/g)
+    console.log(fileNameList);
     var contentList = [];
     fileNameList.forEach(function(e){
       fs.readFile(e, function(err, word){

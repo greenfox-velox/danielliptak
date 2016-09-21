@@ -1,8 +1,8 @@
 'use strict';
 
-var Car = ( function() {
+var Car = ( function(type, colour, balance) {
   var Id = 0;
-  return function car(type, colour, balance) {
+  return function car() {
     this.Id = Id++;
     this.types = type;
     this.colour = colour;
